@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- Use Accessing process.env variables in Azure Functions for dynamic titles -->
+        <title>
+            Tobias Wright - Software Engineer
+            
+                - Accessing process.env variables in Azure Functions 
+            
+            </title>
+        <!-- Shoelace (via cdn) -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shoelace-css/1.0.0-beta10/shoelace.css" crossorigin="anonymous">
+        
+<link rel="stylesheet" href="/css/style.css">
+
+        <link href="https://fonts.googleapis.com/css2?family=Corben:wght@700&display=swap" rel="stylesheet">
+
+    <meta name="generator" content="Hexo 5.0.0"></head>
+    <body>
+        <div id="wrapper">
+            <header>
+                <h1><a href="/">tobias wright</a></h1>
+                <p>software engineer</p>
+            </header>
+            <div class='row'>
+ <a class='btn btn-default' href='/'>< Home</a>
+</div>
+<div id='post' class='row'>
+ <h1>Accessing process.env variables in Azure Functions</h1>
+ <div class='text-muted'>
+        2017-05-16 
+    </div>
+ <p>Just thought I’d document this real quick, since it’s not super clear in the documentation, at least for developing Azure Function locally. On the server it’s clearer, but I’ll cover that too. It took me a couple of days to find the answer - and in all truth, I kind of stumbled on to the solution.</p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-node">In this article</a> they tell you you can access variables at runtime, and my assumption was I could add the value pair to local.settings.json (It use to be called appsettings.json). I do just that and…nothing - variable does not exist.</p>
+<p>local.settings.json:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;IsEncrypted&quot;: false,</span><br><span class="line">  &quot;Values&quot;: &#123;</span><br><span class="line">    &quot;secretKey&quot;: &quot;mycoolsecretkey&quot;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>index.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">context.log(process.env[&quot;secretKey&quot;])</span><br><span class="line">&#x2F;&#x2F;returns undefined</span><br></pre></td></tr></table></figure>
+
+
+<p>What you have to do is add this object to the configuration array in luanch.json</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;type&quot;: &quot;node&quot;,</span><br><span class="line">    &quot;request&quot;: &quot;attach&quot;,</span><br><span class="line">    &quot;name&quot;: &quot;Attach to Process&quot;,</span><br><span class="line">    &quot;processId&quot;: &quot;$&#123;command:PickProcess&#125;&quot;,</span><br><span class="line">    &quot;port&quot;: 5858</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>And viola it works. Locally, in Visual Studio Code, when you open up luanch.json if gives you a bunch of other basic config options to create at runtime, so if a thing is not working and you think is should be try checking that out. I kind of stumbled on this file while trying to debug this issue.</p>
+<p>In the portal add the variables to Platform features &gt; Applications settings</p>
+<p><img src="/images/appsettings.PNG" alt="screeshot"></p>
+
+</div>
+        </div>
+        
+<script src="/js/script.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- Use Getting around CORS with Azure Functions for dynamic titles -->
+        <title>
+            Tobias Wright - Software Engineer
+            
+                - Getting around CORS with Azure Functions 
+            
+            </title>
+        <!-- Shoelace (via cdn) -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shoelace-css/1.0.0-beta10/shoelace.css" crossorigin="anonymous">
+        
+<link rel="stylesheet" href="/css/style.css">
+
+        <link href="https://fonts.googleapis.com/css2?family=Corben:wght@700&display=swap" rel="stylesheet">
+
+    <meta name="generator" content="Hexo 5.0.0"></head>
+    <body>
+        <div id="wrapper">
+            <header>
+                <h1><a href="/">tobias wright</a></h1>
+                <p>software engineer</p>
+            </header>
+            <div class='row'>
+ <a class='btn btn-default' href='/'>< Home</a>
+</div>
+<div id='post' class='row'>
+ <h1>Getting around CORS with Azure Functions</h1>
+ <div class='text-muted'>
+        2017-05-25 
+    </div>
+ <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">Cross Origin Resource (CORS)</a> sharing is a security issue on most browsers that prevent making client side request via http from two different domain. Great for security, sucks for making ajax request.</p>
+<p>Luckily there are a few ways around it, the way I use to do it is when I first started was use to use a php proxy and upload it to heroku and hit the endpoint using JSONP. I used that for a long time, until nodeJS came along and I switched from php to node.</p>
+<p>These days I use nodeJS and <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview">Azure Functions</a>.</p>
+<p>First let me say, I can’t stress how much easier developments is if you are not <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local">developing functions locally</a>, it takes a few moments, but well worth the time to get it up and running.</p>
+<p>To get started create a new Azure Function in the portal - if you don’t have an Azure account you can <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local">try Functions for free</a>.</p>
+<p>Using the <a target="_blank" rel="noopener" href="https://developer.marvel.com/">Marvel API</a>, I simply want to bring up a list of events the <a target="_blank" rel="noopener" href="https://marvel.com/characters/25/hulk">Hulk</a> has been involved in.</p>
+<p>Here’s the NodeJS code I’ll be using:</p>
+<script src="//gist.github.com/ac517a951cef07ba20ad24d83083a67d.js"></script>
+
+<p>To get it in a Azure Function, we need to fill out a few details:</p>
+<img src="/images/createFunc.png" alt="Creating a Function" style="width: 200px;"/>
+
+
+<p>Run npm install to deploy the packages in your package.json (I’m using request) in the command line that Azure gives use under Platform features &gt; console</p>
+<p>Now, take care of the CORS issue under Platform features &gt; CORS, you can use a wildcard so that any request will be honored, but in the real world you’ll want to make sure to fill in the information with the exact domain that will be hitting this endpoint.</p>
+<p>Grab you endpont, and you are all set. Here’s a postman screen grab</p>
+<p><img src="/images/postman.png" alt="Postman!"></p>
+
+</div>
+        </div>
+        
+<script src="/js/script.js"></script>
+
+    </body>
+</html>

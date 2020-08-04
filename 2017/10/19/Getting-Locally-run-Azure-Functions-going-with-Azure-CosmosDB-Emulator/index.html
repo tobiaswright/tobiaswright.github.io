@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- Use Getting Locally run Azure Functions going with Azure CosmosDB Emulator for dynamic titles -->
+        <title>
+            Tobias Wright - Software Engineer
+            
+                - Getting Locally run Azure Functions going with Azure CosmosDB Emulator 
+            
+            </title>
+        <!-- Shoelace (via cdn) -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shoelace-css/1.0.0-beta10/shoelace.css" crossorigin="anonymous">
+        
+<link rel="stylesheet" href="/css/style.css">
+
+        <link href="https://fonts.googleapis.com/css2?family=Corben:wght@700&display=swap" rel="stylesheet">
+
+    <meta name="generator" content="Hexo 5.0.0"></head>
+    <body>
+        <div id="wrapper">
+            <header>
+                <h1><a href="/">tobias wright</a></h1>
+                <p>software engineer</p>
+            </header>
+            <div class='row'>
+ <a class='btn btn-default' href='/'>< Home</a>
+</div>
+<div id='post' class='row'>
+ <h1>Getting Locally run Azure Functions going with Azure CosmosDB Emulator</h1>
+ <div class='text-muted'>
+        2017-10-19 
+    </div>
+ <p>If you are anything like me, I just really love getting things running locally. Not only that, I like to get things running locally, then getting it up to server almost as easily.</p>
+<p><strong>Problem:</strong> I want to connect Locally run Azure Function to the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator">Azure CosmosDB Emulator</a> so I can do all my developing on my ‘puter</p>
+<p><strong>Tools:</strong> Azure Function CLI, Azure CosmoDB emulator</p>
+<p><strong>Requirements</strong></p>
+<ul>
+<li>Azure Function running locally – This is pretty well covered in the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local">documentation</a> and out of scope for this post</li>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator">Download Azure Cosmos DB Emulator</a> and install – Again very well covered in the documentation</li>
+</ul>
+<h3 id="Step-1-Create-your-function"><a href="#Step-1-Create-your-function" class="headerlink" title="Step 1: Create your function."></a>Step 1: Create your function.</h3><p>My function is straight forward. I’m using a httptrigger function, and have data coming in from a form. Then saving that to CosmosDB. The important part here is the property outputDocument – which we define in functions.json.</p>
+<script src="https://gist.github.com/tobiaswright/26c247c84a483c8fd66e16bfbf7d6c87.js?file=azureFunction"></script>
+
+
+<h3 id="Step-2-Add-the-settings-to-the-function-json"><a href="#Step-2-Add-the-settings-to-the-function-json" class="headerlink" title="Step 2: Add the settings to the function.json"></a>Step 2: Add the settings to the function.json</h3><p>Below are the settings you want to add to the functions.json</p>
+<script src="https://gist.github.com/tobiaswright/26c247c84a483c8fd66e16bfbf7d6c87.js?file=functionJsonSnippet"></script>
+
+<p>Let’s go line by line:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>type:</strong></td>
+<td>This is what you are saving to. documentDB, this is what cosmosDB use to be called</td>
+</tr>
+<tr>
+<td><strong>name:</strong></td>
+<td>This where we define the variable that we can use in the function</td>
+</tr>
+<tr>
+<td><strong>databaseName, collectionName:</strong></td>
+<td>This the schema of the CosmosDB, which is a NoSQL database. <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/cosmos-db/introduction">A more indepth  explanation can be found here</a>.</td>
+</tr>
+<tr>
+<td><strong>createIfNotExists:</strong></td>
+<td>I like to set this as true, it saves a little bit of time and manually effort once you get this up to the cloud. If set to true, it’ll check  see if the db and collection  exist, The default is false. I’’m not sure why, it’s just a small piece of defensive coding in my opinon and should always be set to true</td>
+</tr>
+<tr>
+<td><strong>connection</strong></td>
+<td>This is important. This is the variable we’ll assign the connection string. This is thing that makes it super easy to get this up to the cloud. We’ll look where to define this in the next step.</td>
+</tr>
+<tr>
+<td><strong>direction</strong></td>
+<td>basically means which direction this add-in is going, in or out the function</td>
+</tr>
+</tbody></table>
+<p>Here’s my whole functions.json for context:</p>
+<script src="https://gist.github.com/tobiaswright/26c247c84a483c8fd66e16bfbf7d6c87.js?file=functionJson"></script>
+
+
+<h3 id="Step-3-Setup-connection-string-variable"><a href="#Step-3-Setup-connection-string-variable" class="headerlink" title="Step 3: Setup connection string variable"></a>Step 3: Setup connection string variable</h3><p>This is where we set up the connection to the emulator. This is where the magic happens.</p>
+<p>In your local.settings.json add this line to the Values object:</p>
+<script src="https://gist.github.com/tobiaswright/26c247c84a483c8fd66e16bfbf7d6c87.js?file=localSettingsSnippit"></script>
+
+<p>To connect things in Azure you need the endpoing and the account key. In this instance we know that the emulator, according to the documention, once running is always this</p>
+<script src="https://gist.github.com/tobiaswright/26c247c84a483c8fd66e16bfbf7d6c87.js?file=emulatorKey"></script>
+
+<p>You’ll also notice that the key is crmdb, the same as in the function.json</p>
+<p>Here’s my whole local.settings file for context.</p>
+<script src="https://gist.github.com/tobiaswright/26c247c84a483c8fd66e16bfbf7d6c87.js?file=localSettings"></script>
+
+<p>And that’s basically it. Once this piece is in, then you should be good to go.</p>
+<p><strong>Learnings</strong></p>
+<ul>
+<li>Make sure you emulator is running, You should be able to see it at <a target="_blank" rel="noopener" href="https://localhost:8081/">https://localhost:8081/</a></li>
+<li>This will not create the DB in Azure for you, so make sure to set that up. You will not have to connect your azure function to the DB, it’ll do that once you get your Azure function in Azure and all its component</li>
+<li>Make sure you have the same variable name you have created to indicate the DB locally created in Azure too, you have to do it manually</li>
+<li>Make sure when you do create that database on Azure, it’s the settings you have set up in the emulator – the Mongo API, for example, expects a certain scheme when saving</li>
+<li>All and all, this is pretty straight forward and saves me a ton of development time.</li>
+</ul>
+
+</div>
+        </div>
+        
+<script src="/js/script.js"></script>
+
+    </body>
+</html>

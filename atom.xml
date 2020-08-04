@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>tobias wright</title>
+  
+  <subtitle>software engineer</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://tobiaswright.com/"/>
+  <updated>2020-07-29T18:23:27.767Z</updated>
+  <id>http://tobiaswright.com/</id>
+  
+  <author>
+    <name>Tobias Wright</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Continous deployment of static websites on Azure</title>
+    <link href="http://tobiaswright.com/2018/09/27/static-websites-on-azure/"/>
+    <id>http://tobiaswright.com/2018/09/27/static-websites-on-azure/</id>
+    <published>2018-09-27T04:01:24.000Z</published>
+    <updated>2020-07-29T18:23:27.767Z</updated>
+    
+    <content type="html"><![CDATA[<p>Azure finally has the ability to host static websites straight from storage! This is great news since I do a lot of client-side development that have minimal back-ends</p><p>It’s not as quick and easy as some of the services that specialize in hosting static sites, especially if you like to use the CLI, but if you’ve invested in the Azure ecosystem and you like static sites it’s definitely worth looking into.</p><p>The feature is in preview and may break at some point before general release. Consider yourself warned. I myself will be using this in my most crucial production sites, because I’m about that life.<br>Here’s how you do it</p><ol><li><p>Set up a general purpose storage in the portal. In the left hand panel, you’ll see the option to create a static site. You’ll want to enable static sites, designate your index file and optionally give a link to a 404 page</p></li><li><p>This will create a container a container in blob storage, called $web. It also gives you the endpoint for your site<br><img src="/images/st2.jpg" alt="screeshot"></p></li><li><p>With that done, you are done. You can upload your static files from the portal, storage explorer or the CLI, however if you are interested in continuous integration, read on<br><img src="/images/st4.jpg" alt="screeshot"></p></li><li><p>Crack open Azure DevOps, and create a new project.</p></li><li><p>Go to Azure pipeline and click on Pipelines&gt;Releases&gt;New Pipeline. Start with an Empty Job.<br><img src="/images/st5.jpg" alt="screeshot"></p></li><li><p>Skip adding a task to Stage 1 first, and add an artifact. I have a really simple web page so I don’t need to build anything before release, so I connect my github as a service to this project and  release straight from commits to get the artifacts</p></li><li><p>Click on the thunderbolt and enable continuous deployment trigger<br><img src="/images/st6.jpg" alt="screeshot"></p></li><li><p>Now click on Task&gt;Stage 1, add a new task and search for Azure File Copy<br><img src="/images/st7.jpg" alt="screeshot"></p></li><li><p>Be sure to change the version to 2.*. Once you authorize your subscription, it’ll auto-fill in almost all of the fields, but you will need to type in $web for the container<br><img src="/images/st8.jpg" alt="screeshot"></p></li><li><p>Click save. Boom, all done</p></li></ol><p>So now you have CI/CD with static website on Azure – go ahead, make a commit</p><h2 id="Gotchas"><a href="#Gotchas" class="headerlink" title="Gotchas"></a>Gotchas</h2><ul><li>Remember to set you trigger for continuous integration</li><li>Be sure to toggle to version 2 in AZ copy</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      Finally! Static websites on Azure
+    
+    </summary>
+    
+    
+      <category term="Azure DevOps, Azure Pipelines, CI/CD, static website, Azure" scheme="http://tobiaswright.com/tags/Azure-DevOps-Azure-Pipelines-CI-CD-static-website-Azure/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Getting Locally run Azure Functions going with Azure CosmosDB Emulator</title>
+    <link href="http://tobiaswright.com/2017/10/19/Getting-Locally-run-Azure-Functions-going-with-Azure-CosmosDB-Emulator/"/>
+    <id>http://tobiaswright.com/2017/10/19/Getting-Locally-run-Azure-Functions-going-with-Azure-CosmosDB-Emulator/</id>
+    <published>2017-10-19T20:17:36.000Z</published>
+    <updated>2020-07-29T18:23:27.765Z</updated>
+    
+    <content type="html"><![CDATA[<p>If you are anything like me, I just really love getting things running locally. Not only that, I like to get things running locally, then getting it up to server almost as easily.</p><p><strong>Problem:</strong> I want to connect Locally run Azure Function to the <a href="https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator">Azure CosmosDB Emulator</a> so I can do all my developing on my ‘puter</p><p><strong>Tools:</strong> Azure Function CLI, Azure CosmoDB emulator</p><p><strong>Requirements</strong></p><ul><li>Azure Function running locally – This is pretty well covered in the <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local">documentation</a> and out of scope for this post</li><li><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator">Download Azure Cosmos DB Emulator</a> and install – Again very well covered in the documentation</li></ul><h3 id="Step-1-Create-your-function"><a href="#Step-1-Create-your-function" class="headerlink" title="Step 1: Create your function."></a>Step 1: Create your function.</h3><p>My function is straight forward. I’m using a httptrigger function, and have data coming in from a form. Then saving that to CosmosDB. The important part here is the property outputDocument – which we define in functions.json.</p><script src="https://gist.github.com/tobiaswright/26c247c84a483c8fd66e16bfbf7d6c87.js?file=azureFunction"></script><h3 id="Step-2-Add-the-settings-to-the-function-json"><a href="#Step-2-Add-the-settings-to-the-function-json" class="headerlink" title="Step 2: Add the settings to the function.json"></a>Step 2: Add the settings to the function.json</h3><p>Below are the settings you want to add to the functions.json</p><script src="https://gist.github.com/tobiaswright/26c247c84a483c8fd66e16bfbf7d6c87.js?file=functionJsonSnippet"></script><p>Let’s go line by line:</p><table><thead><tr><th>Key</th><th>Value</th></tr></thead><tbody><tr><td><strong>type:</strong></td><td>This is what you are saving to. documentDB, this is what cosmosDB use to be called</td></tr><tr><td><strong>name:</strong></td><td>This where we define the variable that we can use in the function</td></tr><tr><td><strong>databaseName, collectionName:</strong></td><td>This the schema of the CosmosDB, which is a NoSQL database. <a href="https://docs.microsoft.com/en-us/azure/cosmos-db/introduction">A more indepth  explanation can be found here</a>.</td></tr><tr><td><strong>createIfNotExists:</strong></td><td>I like to set this as true, it saves a little bit of time and manually effort once you get this up to the cloud. If set to true, it’ll check  see if the db and collection  exist, The default is false. I’’m not sure why, it’s just a small piece of defensive coding in my opinon and should always be set to true</td></tr><tr><td><strong>connection</strong></td><td>This is important. This is the variable we’ll assign the connection string. This is thing that makes it super easy to get this up to the cloud. We’ll look where to define this in the next step.</td></tr><tr><td><strong>direction</strong></td><td>basically means which direction this add-in is going, in or out the function</td></tr></tbody></table><p>Here’s my whole functions.json for context:</p><script src="https://gist.github.com/tobiaswright/26c247c84a483c8fd66e16bfbf7d6c87.js?file=functionJson"></script><h3 id="Step-3-Setup-connection-string-variable"><a href="#Step-3-Setup-connection-string-variable" class="headerlink" title="Step 3: Setup connection string variable"></a>Step 3: Setup connection string variable</h3><p>This is where we set up the connection to the emulator. This is where the magic happens.</p><p>In your local.settings.json add this line to the Values object:</p><script src="https://gist.github.com/tobiaswright/26c247c84a483c8fd66e16bfbf7d6c87.js?file=localSettingsSnippit"></script><p>To connect things in Azure you need the endpoing and the account key. In this instance we know that the emulator, according to the documention, once running is always this</p><script src="https://gist.github.com/tobiaswright/26c247c84a483c8fd66e16bfbf7d6c87.js?file=emulatorKey"></script><p>You’ll also notice that the key is crmdb, the same as in the function.json</p><p>Here’s my whole local.settings file for context.</p><script src="https://gist.github.com/tobiaswright/26c247c84a483c8fd66e16bfbf7d6c87.js?file=localSettings"></script><p>And that’s basically it. Once this piece is in, then you should be good to go.</p><p><strong>Learnings</strong></p><ul><li>Make sure you emulator is running, You should be able to see it at <a href="https://localhost:8081/">https://localhost:8081/</a></li><li>This will not create the DB in Azure for you, so make sure to set that up. You will not have to connect your azure function to the DB, it’ll do that once you get your Azure function in Azure and all its component</li><li>Make sure you have the same variable name you have created to indicate the DB locally created in Azure too, you have to do it manually</li><li>Make sure when you do create that database on Azure, it’s the settings you have set up in the emulator – the Mongo API, for example, expects a certain scheme when saving</li><li>All and all, this is pretty straight forward and saves me a ton of development time.</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;If you are anything like me, I just really love getting things running locally. Not only that, I like to get things running locally, then
+      
+    
+    </summary>
+    
+    
+      <category term="Azure, Azure Functions, ComosDB, Emulator" scheme="http://tobiaswright.com/tags/Azure-Azure-Functions-ComosDB-Emulator/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Syndicating Medium post with Azure Logic Apps</title>
+    <link href="http://tobiaswright.com/2017/08/17/Syndicating-Medium-post-with-Azure-Logic-Apps/"/>
+    <id>http://tobiaswright.com/2017/08/17/Syndicating-Medium-post-with-Azure-Logic-Apps/</id>
+    <published>2017-08-17T16:57:34.000Z</published>
+    <updated>2020-07-29T18:23:27.766Z</updated>
+    
+    <content type="html"><![CDATA[<p>In full transparency, I want more out of <a href="https://azure.microsoft.com/en-us/services/logic-apps/">Logic Apps</a> (which is the same as <a href="https://us.flow.microsoft.com/en-us/">Microsoft Flow</a>, but Flow is more UI friendly - also at first blush it seems to be an <a href="https://ifttt.com/discover">IFTTT</a> clone, but I’m not so convinced now), it was always hard for me to find a good use for them. That is until I found there’s no easy way to display my Medium post on my website. There are ways I could have brought the posts in, most likey using just Functions, but I didn’t want to do it the same way again, so why not try something new. Enter Logic Apps.</p><p><strong>Problem:</strong> Bring in the RSS feed from Medium and sydicate it to my site</p><p><strong>Tools:</strong> Azure Logic Apps, Azure Functions, Azure Blob Storage, Javascript</p><p><strong>Requirement:</strong> I don’t want to have to think about this again. Ever.</p><p>Here’s a quick wireframe of the first version.</p><img src="/images/logicappwire1.PNG" alt="Logic Apps Wireframe"><p>There were a couple of problems with this. First. It only checked the RSS feed when something was added. So what if I wanted to delete a post or update a post? I’d have no other way to update the feed.</p><p>Also, my final step was an Azure Function, which really makes no sense since Functions are essentially a passthru, and I can always save straight to CosmosDB as apart of Logic Apps, especially since after collecting the RSS feed it ransforms it to JSON.</p><p>Here’s what I came up with next:</p><img src="/images/logicappwire2.PNG" alt="Logic Apps Wireframe"><p>So a few changes here. I decided that I’d still kick off the Logic App on update, but I’d grab the whole feed as the next step. Now any updates would be included when adding to the feed. Still need to add an item to kick that off though. I’ll fix that in the next version.</p><p>I also end the Logic App with saving to CosmoDB and updating a record with the feed download. I’d figure I create an Azure Function to pull the feed in my site with javascript.</p><p>Almost there I think…</p><img src="/images/logicappwire3.PNG" alt="Logic Apps Wireframe"><p>I decided to switch out the kick off on new add and just check the feed once a day. cool. Also, I switched out CosmoDB to Azure Blob. Blobs are cheaper, and I don’t really need the overhead of a NoSQL database. A data dump is fine.</p><img src="/images/logicapps1.png" alt="Logic Apps Screenshot" style="width:300px;display:table;margin-right: auto;margin-left: auto;"><p>You’ll notice a couple of changes. One, I found that I couldn’t jump right blob storage for some reason, it wanted to evalute every item in a for-each loop. I found the easiest way is just to use a compose connector and capture the body data - aka the feed.</p><p>Also, I wanted to do some defensive coding by making a fallback if the blob does not exsist, but it does assume you have a container called medium. I don’t see a way to create a blob container. Remember when I said I want Logic Apps to do more?</p><p>Okay, so here’s the Logic App Code.</p><script src="https://gist.github.com/tobiaswright/f02cfbe181e8505f4295acabed8c3525.js"></script><p>Here’s the Azure Function I used to grab the contents when I make the ajax call from the site.</p><script src="https://gist.github.com/tobiaswright/a8ba4cc0621c51c5fb3c7131c6495cb1.js"></script><p>Here’s the javascript I’m using to make the call.</p><script src="https://gist.github.com/tobiaswright/1be0723582413b5b42cbbe989c6df772.js"></script><p><strong>Learnings</strong></p><ul><li>I messed around with conditionals quite a bit while doing this, while none of it ended up in my solution, there is no built in boolean, <a href="https://stackoverflow.com/questions/42652095/boolean-not-working-in-logic-app-condition">you can workaround it</a>.</li><li>Make sure the Logic App and the Function are connected to same storage resource. It makes life easier.</li><li>I still want Logic Apps to do more…</li></ul><p>Enjoy!</p>]]></content>
+    
+    <summary type="html">
+    
+      Can&#39;t we just make RSS easy?
+    
+    </summary>
+    
+    
+      <category term="Azure, Logic Apps, RSS, Azure Functions" scheme="http://tobiaswright.com/tags/Azure-Logic-Apps-RSS-Azure-Functions/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Getting around CORS with Azure Functions</title>
+    <link href="http://tobiaswright.com/2017/05/25/CORS-with-azure-functions/"/>
+    <id>http://tobiaswright.com/2017/05/25/CORS-with-azure-functions/</id>
+    <published>2017-05-25T15:30:10.000Z</published>
+    <updated>2020-07-29T18:23:27.765Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">Cross Origin Resource (CORS)</a> sharing is a security issue on most browsers that prevent making client side request via http from two different domain. Great for security, sucks for making ajax request.</p><p>Luckily there are a few ways around it, the way I use to do it is when I first started was use to use a php proxy and upload it to heroku and hit the endpoint using JSONP. I used that for a long time, until nodeJS came along and I switched from php to node.</p><p>These days I use nodeJS and <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview">Azure Functions</a>.</p><p>First let me say, I can’t stress how much easier developments is if you are not <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local">developing functions locally</a>, it takes a few moments, but well worth the time to get it up and running.</p><p>To get started create a new Azure Function in the portal - if you don’t have an Azure account you can <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local">try Functions for free</a>.</p><p>Using the <a href="https://developer.marvel.com/">Marvel API</a>, I simply want to bring up a list of events the <a href="https://marvel.com/characters/25/hulk">Hulk</a> has been involved in.</p><p>Here’s the NodeJS code I’ll be using:</p><script src="//gist.github.com/ac517a951cef07ba20ad24d83083a67d.js"></script><p>To get it in a Azure Function, we need to fill out a few details:</p><img src="/images/createFunc.png" alt="Creating a Function" style="width: 200px;"/><p>Run npm install to deploy the packages in your package.json (I’m using request) in the command line that Azure gives use under Platform features &gt; console</p><p>Now, take care of the CORS issue under Platform features &gt; CORS, you can use a wildcard so that any request will be honored, but in the real world you’ll want to make sure to fill in the information with the exact domain that will be hitting this endpoint.</p><p>Grab you endpont, and you are all set. Here’s a postman screen grab</p><p><img src="/images/postman.png" alt="Postman!"></p>]]></content>
+    
+    <summary type="html">
+    
+      Cross domain scripting!
+    
+    </summary>
+    
+    
+      <category term="Azure Functions, CORS, How-to" scheme="http://tobiaswright.com/tags/Azure-Functions-CORS-How-to/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Accessing process.env variables in Azure Functions</title>
+    <link href="http://tobiaswright.com/2017/05/16/accessing-environmental-variables-azure-functions/"/>
+    <id>http://tobiaswright.com/2017/05/16/accessing-environmental-variables-azure-functions/</id>
+    <published>2017-05-16T04:01:24.000Z</published>
+    <updated>2020-07-29T18:23:27.766Z</updated>
+    
+    <content type="html"><![CDATA[<p>Just thought I’d document this real quick, since it’s not super clear in the documentation, at least for developing Azure Function locally. On the server it’s clearer, but I’ll cover that too. It took me a couple of days to find the answer - and in all truth, I kind of stumbled on to the solution.</p><p><a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-node">In this article</a> they tell you you can access variables at runtime, and my assumption was I could add the value pair to local.settings.json (It use to be called appsettings.json). I do just that and…nothing - variable does not exist.</p><p>local.settings.json:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;IsEncrypted&quot;: false,</span><br><span class="line">  &quot;Values&quot;: &#123;</span><br><span class="line">    &quot;secretKey&quot;: &quot;mycoolsecretkey&quot;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>index.js</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">context.log(process.env[&quot;secretKey&quot;])</span><br><span class="line">&#x2F;&#x2F;returns undefined</span><br></pre></td></tr></table></figure><p>What you have to do is add this object to the configuration array in luanch.json</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;type&quot;: &quot;node&quot;,</span><br><span class="line">    &quot;request&quot;: &quot;attach&quot;,</span><br><span class="line">    &quot;name&quot;: &quot;Attach to Process&quot;,</span><br><span class="line">    &quot;processId&quot;: &quot;$&#123;command:PickProcess&#125;&quot;,</span><br><span class="line">    &quot;port&quot;: 5858</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>And viola it works. Locally, in Visual Studio Code, when you open up luanch.json if gives you a bunch of other basic config options to create at runtime, so if a thing is not working and you think is should be try checking that out. I kind of stumbled on this file while trying to debug this issue.</p><p>In the portal add the variables to Platform features &gt; Applications settings</p><p><img src="/images/appsettings.PNG" alt="screeshot"></p>]]></content>
+    
+    <summary type="html">
+    
+      Because it took me so long to figure this out
+    
+    </summary>
+    
+    
+      <category term="Functions, Azure" scheme="http://tobiaswright.com/tags/Functions-Azure/"/>
+    
+  </entry>
+  
+</feed>

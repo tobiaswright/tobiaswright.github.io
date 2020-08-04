@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- Use Continous deployment of static websites on Azure for dynamic titles -->
+        <title>
+            Tobias Wright - Software Engineer
+            
+                - Continous deployment of static websites on Azure 
+            
+            </title>
+        <!-- Shoelace (via cdn) -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shoelace-css/1.0.0-beta10/shoelace.css" crossorigin="anonymous">
+        
+<link rel="stylesheet" href="/css/style.css">
+
+        <link href="https://fonts.googleapis.com/css2?family=Corben:wght@700&display=swap" rel="stylesheet">
+
+    <meta name="generator" content="Hexo 5.0.0"></head>
+    <body>
+        <div id="wrapper">
+            <header>
+                <h1><a href="/">tobias wright</a></h1>
+                <p>software engineer</p>
+            </header>
+            <div class='row'>
+ <a class='btn btn-default' href='/'>< Home</a>
+</div>
+<div id='post' class='row'>
+ <h1>Continous deployment of static websites on Azure</h1>
+ <div class='text-muted'>
+        2018-09-27 
+    </div>
+ <p>Azure finally has the ability to host static websites straight from storage! This is great news since I do a lot of client-side development that have minimal back-ends</p>
+<p>It’s not as quick and easy as some of the services that specialize in hosting static sites, especially if you like to use the CLI, but if you’ve invested in the Azure ecosystem and you like static sites it’s definitely worth looking into.</p>
+<p>The feature is in preview and may break at some point before general release. Consider yourself warned. I myself will be using this in my most crucial production sites, because I’m about that life.<br>Here’s how you do it</p>
+<ol>
+<li><p>Set up a general purpose storage in the portal. In the left hand panel, you’ll see the option to create a static site. You’ll want to enable static sites, designate your index file and optionally give a link to a 404 page</p>
+</li>
+<li><p>This will create a container a container in blob storage, called $web. It also gives you the endpoint for your site<br><img src="/images/st2.jpg" alt="screeshot"></p>
+</li>
+<li><p>With that done, you are done. You can upload your static files from the portal, storage explorer or the CLI, however if you are interested in continuous integration, read on<br><img src="/images/st4.jpg" alt="screeshot"></p>
+</li>
+<li><p>Crack open Azure DevOps, and create a new project.</p>
+</li>
+<li><p>Go to Azure pipeline and click on Pipelines&gt;Releases&gt;New Pipeline. Start with an Empty Job.<br><img src="/images/st5.jpg" alt="screeshot"></p>
+</li>
+<li><p>Skip adding a task to Stage 1 first, and add an artifact. I have a really simple web page so I don’t need to build anything before release, so I connect my github as a service to this project and  release straight from commits to get the artifacts</p>
+</li>
+<li><p>Click on the thunderbolt and enable continuous deployment trigger<br><img src="/images/st6.jpg" alt="screeshot"></p>
+</li>
+<li><p>Now click on Task&gt;Stage 1, add a new task and search for Azure File Copy<br><img src="/images/st7.jpg" alt="screeshot"></p>
+</li>
+<li><p>Be sure to change the version to 2.*. Once you authorize your subscription, it’ll auto-fill in almost all of the fields, but you will need to type in $web for the container<br><img src="/images/st8.jpg" alt="screeshot"></p>
+</li>
+<li><p>Click save. Boom, all done</p>
+</li>
+</ol>
+<p>So now you have CI/CD with static website on Azure – go ahead, make a commit</p>
+<h2 id="Gotchas"><a href="#Gotchas" class="headerlink" title="Gotchas"></a>Gotchas</h2><ul>
+<li>Remember to set you trigger for continuous integration</li>
+<li>Be sure to toggle to version 2 in AZ copy</li>
+</ul>
+
+</div>
+        </div>
+        
+<script src="/js/script.js"></script>
+
+    </body>
+</html>

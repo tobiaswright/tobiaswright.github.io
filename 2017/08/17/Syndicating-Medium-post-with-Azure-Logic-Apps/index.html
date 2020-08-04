@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- Use Syndicating Medium post with Azure Logic Apps for dynamic titles -->
+        <title>
+            Tobias Wright - Software Engineer
+            
+                - Syndicating Medium post with Azure Logic Apps 
+            
+            </title>
+        <!-- Shoelace (via cdn) -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shoelace-css/1.0.0-beta10/shoelace.css" crossorigin="anonymous">
+        
+<link rel="stylesheet" href="/css/style.css">
+
+        <link href="https://fonts.googleapis.com/css2?family=Corben:wght@700&display=swap" rel="stylesheet">
+
+    <meta name="generator" content="Hexo 5.0.0"></head>
+    <body>
+        <div id="wrapper">
+            <header>
+                <h1><a href="/">tobias wright</a></h1>
+                <p>software engineer</p>
+            </header>
+            <div class='row'>
+ <a class='btn btn-default' href='/'>< Home</a>
+</div>
+<div id='post' class='row'>
+ <h1>Syndicating Medium post with Azure Logic Apps</h1>
+ <div class='text-muted'>
+        2017-08-17 
+    </div>
+ <p>In full transparency, I want more out of <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/services/logic-apps/">Logic Apps</a> (which is the same as <a target="_blank" rel="noopener" href="https://us.flow.microsoft.com/en-us/">Microsoft Flow</a>, but Flow is more UI friendly - also at first blush it seems to be an <a target="_blank" rel="noopener" href="https://ifttt.com/discover">IFTTT</a> clone, but I’m not so convinced now), it was always hard for me to find a good use for them. That is until I found there’s no easy way to display my Medium post on my website. There are ways I could have brought the posts in, most likey using just Functions, but I didn’t want to do it the same way again, so why not try something new. Enter Logic Apps.</p>
+<p><strong>Problem:</strong> Bring in the RSS feed from Medium and sydicate it to my site</p>
+<p><strong>Tools:</strong> Azure Logic Apps, Azure Functions, Azure Blob Storage, Javascript</p>
+<p><strong>Requirement:</strong> I don’t want to have to think about this again. Ever.</p>
+<p>Here’s a quick wireframe of the first version.</p>
+<img src="/images/logicappwire1.PNG" alt="Logic Apps Wireframe">
+
+<p>There were a couple of problems with this. First. It only checked the RSS feed when something was added. So what if I wanted to delete a post or update a post? I’d have no other way to update the feed.</p>
+<p>Also, my final step was an Azure Function, which really makes no sense since Functions are essentially a passthru, and I can always save straight to CosmosDB as apart of Logic Apps, especially since after collecting the RSS feed it ransforms it to JSON.</p>
+<p>Here’s what I came up with next:</p>
+<img src="/images/logicappwire2.PNG" alt="Logic Apps Wireframe">
+
+<p>So a few changes here. I decided that I’d still kick off the Logic App on update, but I’d grab the whole feed as the next step. Now any updates would be included when adding to the feed. Still need to add an item to kick that off though. I’ll fix that in the next version.</p>
+<p>I also end the Logic App with saving to CosmoDB and updating a record with the feed download. I’d figure I create an Azure Function to pull the feed in my site with javascript.</p>
+<p>Almost there I think…</p>
+<img src="/images/logicappwire3.PNG" alt="Logic Apps Wireframe">
+
+<p>I decided to switch out the kick off on new add and just check the feed once a day. cool. Also, I switched out CosmoDB to Azure Blob. Blobs are cheaper, and I don’t really need the overhead of a NoSQL database. A data dump is fine.</p>
+<img src="/images/logicapps1.png" alt="Logic Apps Screenshot" style="width:300px;display:table;margin-right: auto;margin-left: auto;">
+
+<p>You’ll notice a couple of changes. One, I found that I couldn’t jump right blob storage for some reason, it wanted to evalute every item in a for-each loop. I found the easiest way is just to use a compose connector and capture the body data - aka the feed.</p>
+<p>Also, I wanted to do some defensive coding by making a fallback if the blob does not exsist, but it does assume you have a container called medium. I don’t see a way to create a blob container. Remember when I said I want Logic Apps to do more?</p>
+<p>Okay, so here’s the Logic App Code.</p>
+<script src="https://gist.github.com/tobiaswright/f02cfbe181e8505f4295acabed8c3525.js"></script>
+
+<p>Here’s the Azure Function I used to grab the contents when I make the ajax call from the site.</p>
+<script src="https://gist.github.com/tobiaswright/a8ba4cc0621c51c5fb3c7131c6495cb1.js"></script>
+
+<p>Here’s the javascript I’m using to make the call.</p>
+<script src="https://gist.github.com/tobiaswright/1be0723582413b5b42cbbe989c6df772.js"></script>
+
+<p><strong>Learnings</strong></p>
+<ul>
+<li>I messed around with conditionals quite a bit while doing this, while none of it ended up in my solution, there is no built in boolean, <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/42652095/boolean-not-working-in-logic-app-condition">you can workaround it</a>.</li>
+<li>Make sure the Logic App and the Function are connected to same storage resource. It makes life easier.</li>
+<li>I still want Logic Apps to do more…</li>
+</ul>
+<p>Enjoy!</p>
+
+</div>
+        </div>
+        
+<script src="/js/script.js"></script>
+
+    </body>
+</html>
