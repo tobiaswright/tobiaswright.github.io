@@ -1,4 +1,5 @@
 ---
+import Footer from "../components/Footer.astro";
 export interface Props {
 	title: string;
 	header: string
@@ -8,7 +9,7 @@ const { title, header } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="border-t-8 border-black bg-orange-500">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -16,8 +17,11 @@ const { title, header } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
+		<div class="container mx-auto border-x-8 border-black px-10 bg-zinc-50 h-screen pt-24">
 		<h1>{header}</h1>
 		<slot />
+		<Footer />
+		</div>
 	</body>
 </html>
 <style is:global>
@@ -33,9 +37,4 @@ const { title, header } = Astro.props;
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,Bitstream Vera Sans Mono, Courier New, monospace;
 	}
 
-	h1 {
-		margin: auto;
-		padding: 1.5rem;
-		width: 517px;
-	}
 </style>
