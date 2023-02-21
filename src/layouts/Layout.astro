@@ -14,11 +14,14 @@ const { title, header } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
 		<title>{title}</title>
 	</head>
-	<body class="bg-orange-500" style="background-image: url('../bkg.gif')">
-		<div class="container mx-auto border-x-8 border-black px-10 bg-zinc-50 h-screen pt-24 drop-shadow-lg">
-		<h1>{header}</h1>
+	<body class="bg-orange-500" style="background-image: url('../bkg-panels.gif')">
+		<div class="container mx-auto h-screen pt-24 bg-no-repeat bg-center bg-top" style="background-image: url('../speech-bubble.png')">
+		<h1 class="text-center mt-12 font-lede text-8xl">{header}</h1>
 		<slot />
 		<Footer />
 		</div>
@@ -38,3 +41,6 @@ const { title, header } = Astro.props;
 	}
 
 </style>
+
+
+<!-- <div class="container mx-auto border-x-8 border-black px-10 bg-zinc-50 h-screen pt-24 drop-shadow-lg"></div> -->
