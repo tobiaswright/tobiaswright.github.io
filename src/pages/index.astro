@@ -1,15 +1,20 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout-HTML.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="Welcome to Tobias Wright." header="Tobias Wright">
-	<main>
-		<p class="text-center">
-			frontend engineer, you can find me on <a href="https://github.com/tobiaswright">Github</a> and <a href="https://www.linkedin.com/in/tobiaswright/">Linkedin</a>.
-		</p>
-	</main>
+<Layout title="Welcome to Tobias Wright.">
+  <div
+    class="container mx-auto h-screen pt-24 bg-no-repeat bg-center bg-top"
+    style="background-image: url('../speech-bubble.png')"
+  >
+    <h1 class="text-center mt-12 font-lede text-[170px] leading-[130px]">Tobias<br />Wright</h1>
+    <main>
+      <p class="text-center">
+        frontend engineer, you can find me on <a
+          href="https://github.com/tobiaswright">Github</a
+        > and <a href="https://www.linkedin.com/in/tobiaswright/">Linkedin</a>.
+      </p>
+    </main>
+  </div>
 </Layout>
-
-<style>
-	h1 { color : red}
-</style>
