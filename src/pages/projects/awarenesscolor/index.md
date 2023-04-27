@@ -2,8 +2,14 @@
 layout: '../../../layouts/Layout.astro'
 title: 'My Markdown page'
 ---
-# Title
+# Awaness Color project log
 
+
+## Wednesday, April 26, 2023
+
+Created a header today. Was going to do something graphical, but a google font fit the bill.
+
+It's just black and white now, but adding a ticket to give it a little color
 
 ## Tuesday, April 25, 2023
 
