@@ -4,7 +4,7 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				'lede': ['Bangers', 'cursive'],
+				'lede': ['Pragati Narrow', 'cursive'],
 			  },
 		},
 	},
