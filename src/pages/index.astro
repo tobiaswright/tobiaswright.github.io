@@ -1,17 +1,15 @@
 ---
-import Layout from "../layouts/Layout-HTML.astro";
-import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Welcome to Tobias Wright">
   <div>
-    <h1 class="hidden text-center mt-auto md:mt-12 font-lede">Tobias Wright</h1>
-    <ul class="text-center mt-auto md:mt-40 font-lede text-4xl space-x-4">
-      <li class="my-4">github</li>
-      <li class="my-4">linkedin</li>
-      <li class="my-4">writing</li>
-      <li class="my-4">projects</li>
-      <li class="my-4">contact</li>
+    <h1 class="text-center mt-auto md:mt-12 text-4xl font-lede text-rose-700">Tobias Wright</h1>
+    <ul class="text-center mt-auto md:mt-48 text-lg">
+      <li><a class="hover:text-orange-500" href="https://github.com/tobiaswright">Github</a></li>
+      <li><a class="hover:text-orange-500" href="https://www.linkedin.com/in/tobiaswright/">Linkedin</a></li>
+      <li class="text-zinc-200">Writing</li>
+      <li class="text-zinc-200">Projects</li>
     </ul>
   </div>
 </Layout>
