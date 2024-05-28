@@ -9,8 +9,9 @@ To run:
 
 ## FAQ
 
-** How do I change or add a global style like hover on achors? **
-You can do this in the ** base.css ** - this file is located here: node_modules\@astrojs\tailwind\base.css
+**How do I change or add a global style like hover on achors?**
+You can do this in the **base.css** - this file is located here: node_modules\@astrojs\tailwind\base.css
+However, node_modules is not commited so any changes will only appear locally. Instead, add a global style to the Main layout page using the [is_global directive in astro](https://docs.astro.build/en/reference/directives-reference/#isglobal)
 
 
 ## Configuration
