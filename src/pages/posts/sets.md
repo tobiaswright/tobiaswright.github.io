@@ -18,7 +18,9 @@ In JavaScript, the Set is a built-in object that allows you to store unique valu
 
 - **Uniqueness**: A value in a Set can only occur once; it is unique within the Set’s collection.
 - **Insertion Order**: You can iterate through the elements of a Set in insertion order.
-- **Value Equality**: The equality comparison for values in a Set is based on the SameValueZero algorithm. This means that NaN is considered the same as NaN, and all other values are compared using the semantics of the === operator.
+- **Value Equality**: The equality comparison for values in a Set is based on the SameValueZero algorithm.
+
+This means that NaN is considered the same as NaN, and all other values are compared using the semantics of the === operator.
 
 Plus it has a lot of great methods. I’ve really seen it mostly used to remove duplicates from an array like so.
 
