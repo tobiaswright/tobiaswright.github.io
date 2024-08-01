@@ -20,20 +20,42 @@ const { title } = Astro.props;
 
 		<title>{title}</title>
 	</head>
-	<body class="flex flex-col min-h-screen bg-stone-50">
-		<header class="md:container md:mx-auto py-4">
-			<h1 class="no-underline text-center mt-auto md:mt-12 text-4xl text-amber-700 font-['Bangers']">
-				<a class="no-underline hover:no-underline text-amber-700" href="/index.html">Tobias Wright</a>
-			</h1>
+	<body>
+		<header class="flex flex-row-reverse">
+			<section class="flex flex-col-reverse">
+				<h1>Tobias Wright</h1>
+				<p>I am the best I am at what I do.</p>
+			</section>
+			<section>
+				<div style="width:90px;height:150px;background-color:red">ee</div>
+			</section>
 		</header>
 
-		<main class="flex-grow mx-auto max-w-prose">
-			<slot />
+		<nav>
+			<ul>
+				<li><a class="no-underline" href="./projects">About</a></li>
+				<li><a class="no-underline" href="./projects">Projects</a></li>
+				<li class="text-orange-200">Writing</li>
+				<li><a class="no-underline" href="https://www.linkedin.com/in/tobiaswright/" target="_blank">Linkedin</a></li>
+				<li><a class="no-underline" href="https://github.com/tobiaswright" target="_blank">Github</a></li>
+
+				<li class="text-orange-200">Now</li>
+			  </ul>
+		</nav>
+
+		<main>
+			<section>About</section>
+
+			<section>Projects</section>
+
+			<section>Writing</section>
+
+			<!-- <slot /> -->
 		</main>
 
 		<footer>
 			<p class="text-zinc-400 text-center mb-10">
-				This is the website of Tobias Wright, solutions architectect. Site hosted by <a href="https://github.com/tobiaswright/tobiaswright.github.io">Github Pages.</a>
+				This is the website of Tobias Wright, solutions architect. Site hosted by <a href="https://github.com/tobiaswright/tobiaswright.github.io">Github Pages.</a>
 			</p>
 		</footer>
 		
