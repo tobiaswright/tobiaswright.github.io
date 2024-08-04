@@ -21,36 +21,25 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<header class="flex flex-row-reverse">
-			<section class="flex flex-col-reverse">
+		<header>
 				<h1>Tobias Wright</h1>
-				<p>I am the best I am at what I do.</p>
-			</section>
-			<section>
-				<div style="width:90px;height:150px;background-color:red">ee</div>
-			</section>
+				<h2>I like to build stuff for the internet</h2>
 		</header>
 
 		<nav>
 			<ul>
-				<li><a class="no-underline" href="./projects">About</a></li>
-				<li><a class="no-underline" href="./projects">Projects</a></li>
-				<li class="text-orange-200">Writing</li>
+				<li><a class="no-underline" href="./#about">About</a></li>
+				<li><a class="no-underline" href="./#projects">Projects</a></li>
+				<li><a class="no-underline" href="./#writing">Writing</a></li>
 				<li><a class="no-underline" href="https://www.linkedin.com/in/tobiaswright/" target="_blank">Linkedin</a></li>
 				<li><a class="no-underline" href="https://github.com/tobiaswright" target="_blank">Github</a></li>
-
-				<li class="text-orange-200">Now</li>
+				<li><a class="no-underline" href="./now">Now</a></li>
 			  </ul>
 		</nav>
 
+		
 		<main>
-			<section>About</section>
-
-			<section>Projects</section>
-
-			<section>Writing</section>
-
-			<!-- <slot /> -->
+			<slot />			
 		</main>
 
 		<footer>
