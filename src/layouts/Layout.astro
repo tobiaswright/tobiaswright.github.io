@@ -25,21 +25,21 @@ const { title } = Astro.props;
 		<header style="">
 			<section class="bg-violet-900" style="display:flex;justify-content:center">
 				<section class="relative" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
-					<h1 class="drop-shadow-[5px_5px_rgba(0,0,0,1)] header text-white">Tobias Wright</h1>
-					<h2 class="subheader absolute -bottom-8 rounded">I like to build stuff for the internet</h2>
+					<h1 class="font-['Bangers'] text-9xl drop-shadow-[5px_5px_rgba(0,0,0,1)] text-white">Tobias Wright</h1>
+					<h2 class="font-['Comic_Neue'] text-xl italic border-black outline border-4 p-1 bg-yellow-400 absolute -bottom-8 rounded">I like to build stuff for the internet</h2>
 				</section>
 			</section>
 		</header>
 
 		<div class="my-5 flex flex-col md:flex-row md:space-x-4 md:space-y-0 max-w-5xl mx-auto">
 			<aside class="w-32 px-5 py-5">
-				<ul>
-					<li><a class="no-underline" href="./#about">About</a></li>
-					<li><a class="no-underline" href="./#projects">Projects</a></li>
-					<li><a class="no-underline" href="./#writing">Writing</a></li>
-					<li><a class="no-underline" href="https://www.linkedin.com/in/tobiaswright/" target="_blank">Linkedin</a></li>
-					<li><a class="no-underline" href="https://github.com/tobiaswright" target="_blank">Github</a></li>
-					<li><a class="no-underline" href="./now">Now</a></li>
+				<ul class="list-none">
+					<li class="mainLink"><a class="no-underline hover:no-underline text-black" href="./#about">About</a></li>
+					<li class="mainLink"><a class="no-underline hover:no-underline text-black" href="./#projects">Projects</a></li>
+					<li class="mainLink mb-4"><a class="no-underline hover:no-underline text-black" href="./#writing">Writing</a></li>
+					<li class="font-['Comic_Neue'] text-base"><a class="no-underline hover:no-underline text-black" href="https://www.linkedin.com/in/tobiaswright/" target="_blank">Linkedin</a></li>
+					<li class="font-['Comic_Neue'] text-base"><a class="no-underline hover:no-underline text-black" href="https://github.com/tobiaswright" target="_blank">Github</a></li>
+					<li class="font-['Comic_Neue'] text-base"><a class="no-underline hover:no-underline text-black" href="./now">Now</a></li>
 				  </ul>
 			</aside>
 			<main class="w-full px-5 py-5">
@@ -58,23 +58,16 @@ const { title } = Astro.props;
 
 
 <style is:global>
+.mainLink {
+	@apply font-['Bangers'];
+	@apply text-2xl;
+	@apply last:mb-8
+}
 a {
 	@apply hover:text-orange-500;
 	@apply underline;
   }
   ul {
 	  @apply mb-4 list-disc
-  }
-
-  .header {
-	font-size: 130px;
-    font-family: "Bangers", system-ui, sans-serif;
-  }
- .subheader {
-	font-size: 20px;
-	border: 5px solid black;
-	padding: 9px;
-	@apply bg-yellow-400;
-	font-family: "Comic Neue", system-ui, sans-serif;
   }
 </style>
