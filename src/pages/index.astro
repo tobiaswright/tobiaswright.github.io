@@ -1,68 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SectionHead from '../components/SectionHead.astro';
-
+import Section from "../components/Section.astro";
+import Section_About from "../components/homepage/Section-about.astro";
+import Section_Now from "../components/homepage/Section-now.astro";
+import Section_Projects from "../components/homepage/Section-projects.astro";
 ---
 
 <Layout title="Welcome to Tobias Wright">
-  <section>
-    <SectionHead header="about" />
-    <p class="text-2xl">
-      Tobias Wright is a dynamic technologist who has built a successful, two decade, career in software engineering. In his current role as a software engineer at Booz Allen Hamilton, where he enables technology success. Tobias has the uncanny ability to combine technical know-how with a high degree of emotional intelligence.
-    </p>
-    <p>
-      Prior to joining Booz Allen Hamilton, Tobias was a software engineer at Microsoft where he worked in startups, and later as a consultant to Microsoft partners, a Senior Software Engineer at Condé Nast where he helped the company design and build its adtech products for such brands as New Yorker, Wired and Vogue. Tobias has also held lead engineering positions at Victoria’s Secret, Media Ocean, and Simply Good Media.
-    </p>
-    <p>
-      Tobias Wright graduated with honors from New York University and Alabama A&M. While at Alabama A&M he played Offensive tackle on their NCAA division 1 football team. He is a former member of the New York University Alumni Board of Directors and is a former Community Education instructor at Temple University. Tobias is a strong advocate for diversity and inclusion in technology and continues to seek opportunities to provide mentorship and a welcoming and safe environment for those new to programming to learn and grow.
-    </p>
-  </section>
-  <section>
-    <SectionHead header="projects" />
-    <p>Below are some of my personal projects.</p>
-      <ul>
-        <li><a href="http://www.gusgorman.com">GusGorman.com</a></li>
-        <li> <a href="http://www.awarenesscolor.com">Awareness Color</a></li>
-    </ul>
-    <h4>Small Databases</h4>
-    <ul>
-        <li>African-American Programers in Television and Film</li>
-        <li>Color Awareness Chart</li>
-    </ul>
-  </section>
-  <section>
-    <SectionHead header="writing" />
-  </section>
-  <section>
-    <SectionHead header="now" />
-    <p>  What I'm doing these days. Last updated 8/9/2024</p>
-    <ul>
-      <li>I've become a beekeeping apprentice!</li>
-      <li>Working hard on <a href="http://www.gusgorman.com">GusGorman.com</a></li>
-      <li>Working hard on <a href="http://www.tobiaswright.com">tobiaswright.com</a></li>
-  </ul>
+  <Section header="about">
+    <Section_About />
+  </Section>
 
-  <p>Reading</p>
-  <ul>
-    <li>Termination Shock by Neal Stephenson</li>
-  </ul>
+  <Section header="projects">
+    <Section_Projects />
+  </Section>
 
-  <p>Playing</p>
-  <ul>
-    <li>Star Wars Legos: Meh.</li> 
-  </ul>
-  
-  <p>Watching</p>
-  <ul>
-    <li>The Olympics: Coverage this year has been fantastic</li> 
-  </ul>
-  
-  <p>Done!</p>
-  <ul>
-      <li>Watched: The Three Body Problem: Now I want to read the book</li>
-      <li>Brooklyn Nine-nine: Was skeptical at first, but solid from beginning to end</li>
-      <li>Lego City Undercover: 100% complete!</li>
-  </ul>
-  </section>
+  <Section header="writing">
+    <p>Coming soon.</p>
+  </Section>
 
+  <Section header="now">
+    <Section_Now />
+  </Section>
 </Layout>
