@@ -9,8 +9,6 @@ export interface Props {
 
 const { title } = Astro.props;
 ---
-
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -18,24 +16,14 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<style is:global>
-			.mainLink {
-				@apply font-['Bangers'];
-				@apply text-2xl;
-				@apply last:mb-8
-			}
-			body {
-				@apply font-['Playfair_Display'];
-				@apply text-xl
-			}
 			a {
 				@apply hover:text-orange-500;
 				@apply underline;
 			  }
-			  ul {
+			ul {
 				  @apply mb-4 list-disc
-			  }
-		</style>
-		
+			}
+		</style>	
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 			@import url('https://cdnjs.cloudflare.com/ajax/libs/reseter.css/1.0.8/reseter.min.css');
@@ -43,7 +31,7 @@ const { title } = Astro.props;
 
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="font-['Playfair_Display'] text-xl">
 		<Header />
 
 		<div class="my-5 flex flex-col md:flex-row md:space-x-4 md:space-y-0 max-w-5xl mx-auto">
@@ -58,6 +46,7 @@ const { title } = Astro.props;
 		
 	</body>
 </html>
+
 
 
 
