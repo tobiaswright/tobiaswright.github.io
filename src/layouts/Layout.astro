@@ -2,6 +2,7 @@
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import Navigation from '../components/Navigation.astro';
+// import 'https://cdnjs.cloudflare.com/ajax/libs/reseter.css/1.0.8/reseter.min.css'
 
 export interface Props {
 	title: string;
@@ -15,18 +16,8 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<style is:global>
-			a {
-				@apply hover:text-orange-500;
-				@apply underline;
-			  }
-			ul {
-				  @apply mb-4 list-disc
-			}
-		</style>	
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-			@import url('https://cdnjs.cloudflare.com/ajax/libs/reseter.css/1.0.8/reseter.min.css');
 		</style>
 
 		<title>{title}</title>
@@ -48,5 +39,14 @@ const { title } = Astro.props;
 </html>
 
 
-
+<style is:global>
+	@import url("https://cdnjs.cloudflare.com/ajax/libs/reseter.css/1.0.8/reseter.min.css");
+	a {
+		@apply hover:text-orange-500;
+		@apply underline;
+	  }
+	ul {
+		  @apply mb-4 list-disc
+	}
+</style>
 

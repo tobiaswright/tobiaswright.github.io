@@ -8,3 +8,5 @@ export default defineConfig({
   site: 'https://tobiaswright.com',
   integrations: [tailwind()]
 });
+
+
