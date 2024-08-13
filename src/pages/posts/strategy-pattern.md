@@ -7,24 +7,24 @@ author: 'Tobias Wright'
 tags: ["typescript"]
 ---
 
-# Design Pattern: Strategy
+## Design Pattern: Strategy
 
-## Scenario
+### Scenario
 I have an old idea for a program that will send me saved bookmarks from the different bookmarking apps that I used, which at the time was bit.ly, Pocket and Pinboard (before that it was Delicious) 
 
 I went as far as even creating a couple of NPMs of the services I was planning on using.
 
-## Definition
+### Definition
 Strategy Pattern could be one solution, below is the CHATgpt definition:
 
 The Strategy Design Pattern is a behavioral design pattern that allows you to define a family of algorithms, encapsulate each one, and make them interchangeable. [This pattern enables the selection of an algorithm at runtime, allowing the behavior of an object to be changed dynamically without altering its code structure](https://www.geeksforgeeks.org/strategy-pattern-set-1/).
 
-### Key Components:
+#### Key Components:
 1.	Context: Holds a reference to a strategy object and delegates the task to it.
 2.	Strategy Interface: Defines a set of methods that all concrete strategies must implement.
 3.	Concrete Strategies: Implement the strategy interface, each encapsulating a specific algorithm or behavior.
 
-### Benefits:
+#### Benefits:
 - Flexibility: Easily switch between different algorithms at runtime.
 - Modularity: Encapsulate behaviors in separate classes, making the system more maintainable.
 - Reusability: Use the same strategy in different contexts without code duplication.

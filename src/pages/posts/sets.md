@@ -10,7 +10,7 @@ image:
 tags: ["javascript"]
 ---
 
-#### Set Composition in Javascript
+## Set Composition in Javascript
 
 Learned about Set composition today. Now I’m just looking for the problem this will solve.
 
