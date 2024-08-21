@@ -21,7 +21,7 @@ const { title } = Astro.props;
 
 		<title>{title}</title>
 	</head>
-	<body class="font-['Playfair_Display'] text-xl">
+	<body>
 		<Header />
 
 		<div class="my-5 flex flex-col md:flex-row md:space-x-4 md:space-y-0 max-w-5xl mx-auto">
@@ -48,12 +48,6 @@ const { title } = Astro.props;
 	}
 	ul {
 		  @apply mb-4 ml-8 list-disc
-	}
-	h4 {
-		@apply font-bold
-	}
-	main h2 {
-		@apply pt-4 pb-10 text-8xl
 	}
 	main h3 {
 		@apply pt-4 pb-4 text-4xl
