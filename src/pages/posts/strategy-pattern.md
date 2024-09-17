@@ -20,9 +20,9 @@ Strategy Pattern could be one solution, below is the CHATgpt definition:
 The Strategy Design Pattern is a behavioral design pattern that allows you to define a family of algorithms, encapsulate each one, and make them interchangeable. [This pattern enables the selection of an algorithm at runtime, allowing the behavior of an object to be changed dynamically without altering its code structure](https://www.geeksforgeeks.org/strategy-pattern-set-1/).
 
 #### Key Components:
-1.	Context: Holds a reference to a strategy object and delegates the task to it.
-2.	Strategy Interface: Defines a set of methods that all concrete strategies must implement.
-3.	Concrete Strategies: Implement the strategy interface, each encapsulating a specific algorithm or behavior.
+1. Context: Holds a reference to a strategy object and delegates the task to it.
+1. Strategy Interface: Defines a set of methods that all concrete strategies must implement.
+1. Concrete Strategies: Implement the strategy interface, each encapsulating a specific algorithm or behavior.
 
 #### Benefits:
 - Flexibility: Easily switch between different algorithms at runtime.

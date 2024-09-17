@@ -24,10 +24,8 @@ This means that NaN is considered the same as NaN, and all other values are comp
 
 Plus it has a lot of great methods. I’ve really seen it mostly used to remove duplicates from an array like so.
 
-What is new to me is Set compositin, right from the MDN site
+What is new to me is Set composition, right from the MDN site
 
-<img src="../../public/images/set-composition-methods.png" />
+<img src="./../../../public/images/set-composition-methods.png" />
 
-Of course I has to give it a go:
-
-Read all about Set
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Read all about Sets</a>
