@@ -26,6 +26,6 @@ Plus it has a lot of great methods. I’ve really seen it mostly used to remove 
 
 What is new to me is Set composition, right from the MDN site
 
-<img src="./../../../public/images/set-composition-methods.png" />
+<img src="/images/set-composition-methods.png" />
 
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Read all about Sets</a>
