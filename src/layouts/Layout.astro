@@ -24,16 +24,14 @@ const { title } = Astro.props;
 	<body>
 		<Header />
 
-		<div class="px-5 md:py-0 my-14 flex flex-col md:flex-row max-w-3xl mx-auto">
+		<div class="px-5 md:px-0 my-14 flex flex-col md:flex-row max-w-3xl mx-auto">
 			<Navigation />
 			
-			<main class="">
+			<main>
 				<slot />	
 			</main>
 		</div>
-		<div class="md:hidden flex justify-center mb-10">
-			<a class="block hover:text-inherit no-underline p-2 font-['Comic_Neue'] text-xl border-black outline border-4 bg-yellow-400" href="../">Return Home</a>
-		</div>
+
 		<Footer />
 		
 	</body>
