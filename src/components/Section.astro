@@ -2,7 +2,7 @@
 const { header } = Astro.props;
 ---
 <section class="mb-10 last:mb-5">
-    <h3 class="m-0 p-0 uppercase font-['Comic_Neue']" id={header}>{ header }</h3>
+   {header && <h3 class="m-0 p-0 uppercase font-['Comic_Neue']" id={header}>{ header }</h3> }
         <slot />
 </section>
 
