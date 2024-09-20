@@ -13,7 +13,7 @@ It took too many clicks (two!) for me to find out how to do alternating table ro
 
 Straight from the documentaton: [first, last, even and odd](https://tailwindcss.com/docs/hover-focus-and-other-states#first-last-odd-and-even):
 
-```
+```astro
 <table>
   <!-- ... -->
   <tbody>
