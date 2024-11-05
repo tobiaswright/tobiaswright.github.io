@@ -5,6 +5,9 @@ What I'm doing these days. Last updated 11/1/2024
 - Studying for my Solutions Architect - Associate Certificate
 
 #### Reading
+- Invincible
+
+#### Recent Bookmarks
 - [ Sanding UI ]( https://blog.jim-nielsen.com/2024/sanding-ui/ )
 - [ The Art of Finishing ]( https://www.bytedrum.com/posts/art-of-finishing/ )
 - [ Examples of Great URL Design ]( https://blog.jim-nielsen.com/2023/examples-of-great-urls/ )
