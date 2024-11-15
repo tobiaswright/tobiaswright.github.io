@@ -1,4 +1,4 @@
-What I'm doing these days. Last updated 11/1/2024
+What I'm doing these days. Last updated 11/15/2024
 
 - Learning Java
 - Updating Awareness Color
