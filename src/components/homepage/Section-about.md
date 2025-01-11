@@ -1,4 +1,4 @@
-Hi, I’m Tobias, a passionate technologist with a two-decade-long career in software engineering. Even after all this time I still find the internet fasinating and enjoy being a citizen. Here you'll find some of my writing, personal projects.
+Hi, I’m Tobias, a passionate technologist with a two-decade-long career in software engineering. Even after all this time I still find the internet fascinating and enjoy being a citizen. Here you'll find some of my writing, personal projects.
 
 When I'm not in front of a screen, I enjoy biking, reading, beekeeping, listening to music and lately been having a jones for vexillology.
 
