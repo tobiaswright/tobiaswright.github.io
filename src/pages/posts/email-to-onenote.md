@@ -9,6 +9,8 @@ tags: ["email", "note to self"]
 
 ## Email to OneNote
 
+### nvm, this service has been discontinued starting March 2025
+
 Every couple of years I ask “re-discover” why I don’t use email to OneNote. I’m writing this down to help my future self.
 
 tl;dr: Email to OneNote works for outlook email, it does not work for gmail. Work arounds do work.
