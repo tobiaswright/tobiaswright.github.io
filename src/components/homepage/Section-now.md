@@ -1,7 +1,7 @@
-What I'm doing these days. Last updated 2/21/2025
+What I'm doing these days. Last updated 2/24/2025
 
 - Learning Java
-- Finishing up a small project to help manage bookmarks
+- Looking for a new project
 - Re-Intrducing myself to Angular
 
 #### Reading
@@ -16,4 +16,3 @@ What I'm doing these days. Last updated 2/21/2025
 
 #### Watching
 - Avatar: The Last Airbender (Cartoon)
-- 11/23/63

@@ -1,15 +1,15 @@
 ---
 layout: '../../layouts/Layout.astro'
-title: 'Rasberry PI Setup'
+title: 'Raspberry PI Setup'
 pubDate: 2025-02-24
-description: 'Setting up my Rasberry PI'
+description: 'Setting up my Raspberry PI'
 author: 'Tobias Wright'
-tags: ["javascript", "objects"]
+tags: ["raspberrypi"]
 ---
 
-## Setting up my RasberryPI as a personal server
+## Setting up my RaspberryPI as a personal server
 
-I finally updated my and using my old Rasberry pi.
+I finally updated my and using my old Raspberry pi.
 
 What I want to do with it is:
 -	Access to the internet to reach public APIs
@@ -28,7 +28,7 @@ apt-get update --allow-releaseinfo-change
 
 *[Source](https://forums.raspberrypi.com/viewtopic.php?t=245073#p1495319)*
 
-2.	Run these commands to update the rasberryPI:
+2.	Run these commands to update the raspberryPI:
 
 ```bash
 apt-get update
@@ -41,7 +41,7 @@ sudo apt-get upgrade
 sudo apt-get install avahi-daemon
 ```
 
-That’s it. You should be able to ping `rasberrypi.local` on your network
+That’s it. You should be able to ping `raspberrypi.local` on your network
 
 *[Source](https://www.howtogeek.com/167190/how-and-why-to-assign-the-.local-domain-to-your-raspberry-pi/)*
 
