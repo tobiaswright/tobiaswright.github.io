@@ -1,11 +1,11 @@
-What I'm doing these days. Last updated 2/24/2025
+What I'm doing these days. Last updated 3/31/2025
 
 - Learning Java
-- Looking for a new project
-- Re-Intrducing myself to Angular
+- Creating some simple sites
+- Doing a deep dive on RxJs
 
 #### Reading
-- ???
+- The Windup Girl
 
 #### Recent Bookmarks
 - [ Every HTML Element ]( https://iamwillwang.com/every-html-element/ )
@@ -15,4 +15,4 @@ What I'm doing these days. Last updated 2/24/2025
 - [ Always Go To The Funeral ]( https://www.npr.org/2005/08/08/4785079/always-go-to-the-funeral )
 
 #### Watching
-- Avatar: The Last Airbender (Cartoon)
+- Dark
