@@ -1,4 +1,4 @@
-What I'm doing these days. Last updated 3/31/2025
+What I'm doing these days. Last updated 4/16/2025
 
 - Learning Java
 - Creating some simple sites
@@ -8,11 +8,11 @@ What I'm doing these days. Last updated 3/31/2025
 - The Windup Girl
 
 #### Recent Bookmarks
+- [ Scroll buddy ]( https://scrollbuddy.com/ )
+- [ Building Websites With LLMS - Jim Nielsen’s Blog ]( https://blog.jim-nielsen.com/2025/lots-of-little-html-pages/ )
+- [ The Ultimate Ranking of NFL Scorebugs: Design Wins and Fumbles | by Abbey Jo | Feb, 2025 | Medium ]( https://medium.com/@abbeyjo13/the-ultimate-ranking-of-nfl-scorebugs-design-wins-and-fumbles-c8842aa492e8 )
 - [ Every HTML Element ]( https://iamwillwang.com/every-html-element/ )
-- [ An Unreasonable Amount of Time ]( https://allenpike.com/2024/an-unreasonable-amount-of-time )
-- [ How to be a wizard ]( https://jvns.ca/wizard-zine.pdf )
-- [ MIT study explains why laws are written in an incomprehensible style ]( https://news.ycombinator.com/item?id=42438175 )
-- [ Always Go To The Funeral ]( https://www.npr.org/2005/08/08/4785079/always-go-to-the-funeral )
+- [ An Unreasonable Amount of Time - Allen Pike ]( https://allenpike.com/2024/an-unreasonable-amount-of-time )
 
 #### Watching
-- Dark
+- Blue Eye Samurai
