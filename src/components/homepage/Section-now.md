@@ -1,18 +1,21 @@
-What I'm doing these days. Last updated 4/16/2025
+What I'm doing these days. Last updated 5/3/2025
 
 - Learning Java
 - Creating some simple sites
 - Doing a deep dive on RxJs
 
 #### Reading
-- The Windup Girl
+- A Short stay in Hell
+- Never Eat Alone
+- Head Space: Object-Oriented Analysis and Design
+- Anoth Fine Myth (audiobook)
 
 #### Recent Bookmarks
+- [ Tech hiring: is this an inflection point? ]( https://newsletter.pragmaticengineer.com/p/tech-hiring-inflection-point )
+- [ Your Strengths Are Your Weaknesses ]( https://terriblesoftware.org/2025/03/31/your-strengths-are-your-weaknesses/ )
+- [ But what if I really want a faster horse? ]( https://rakhim.exotext.com/but-what-if-i-really-want-a-faster-horse )
 - [ Scroll buddy ]( https://scrollbuddy.com/ )
-- [ Building Websites With LLMS - Jim Nielsen’s Blog ]( https://blog.jim-nielsen.com/2025/lots-of-little-html-pages/ )
-- [ The Ultimate Ranking of NFL Scorebugs: Design Wins and Fumbles | by Abbey Jo | Feb, 2025 | Medium ]( https://medium.com/@abbeyjo13/the-ultimate-ranking-of-nfl-scorebugs-design-wins-and-fumbles-c8842aa492e8 )
-- [ Every HTML Element ]( https://iamwillwang.com/every-html-element/ )
-- [ An Unreasonable Amount of Time - Allen Pike ]( https://allenpike.com/2024/an-unreasonable-amount-of-time )
+- [ Building Websites With LLMS ]( https://blog.jim-nielsen.com/2025/lots-of-little-html-pages/ )
 
 #### Watching
-- Blue Eye Samurai
+- Daredevil: Born Again
