@@ -1,7 +1,7 @@
 ---
 layout: '../../layouts/Layout.astro'
 title: 'DEMO: Waffle: Bookmarking Utility'
-pubDate: 2025-10-03
+pubDate: 2024-10-03
 description: 'Laughing Waffle is the real name'
 author: 'Tobias Wright'
 tags: ["pinboard", "javascript","browser-extention", "demo", "bookmarks", "serviec"]

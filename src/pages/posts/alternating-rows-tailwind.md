@@ -4,7 +4,7 @@ title: 'How-to: Alternating table rows colors in tailwind.css'
 pubDate: 2024-08-31
 description: 'I just knew there had to be able to do alternating colored roles in tailwind.css'
 author: 'Tobias Wright'
-tags: ["tailwind", "css"]
+tags: ["tailwind", "css", "featured"]
 ---
 
 ## How-to: Alternating table rows colors in tailwind.css

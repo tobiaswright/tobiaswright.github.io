@@ -1,8 +1,12 @@
 ---
+import { imageConfig } from "astro:assets";
+
 const allPosts = await Astro.glob('../../pages/posts/*.md');
-allPosts.sort((a, b) => Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate)).splice(5)
+allPosts
+.sort((a, b) => Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate))
+.splice(5)
 ---
 <ul>
     {allPosts.map((post) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
 </ul>
-<a href="/writing">>Read more writing...</a>
+<a href="/writing">>Read more...</a>
