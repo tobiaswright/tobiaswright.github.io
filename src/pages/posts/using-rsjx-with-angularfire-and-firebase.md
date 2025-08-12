@@ -1,4 +1,4 @@
-Using RxJs subjects with angularfire and firwbase
+Using RxJs subjects with angularfire and firebase
 
 Background
 I’m working to understand RxJs a little better, and created a project that is tracking what I’m reading and watching. I’m using Angular and Material with a firebase backend,
