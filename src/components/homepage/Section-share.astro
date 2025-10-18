@@ -1,0 +1,10 @@
+---
+const response = await fetch("https://api.pinboard.in/v1/posts/recent?auth_token=tobiaswright:1986F5187E386B3B1750&format=json&tag=share&count=5");
+const data = await response.json();
+
+---
+
+<h4 class="-mt-7">Recent Bookmarks</h4>
+<ul>
+    {data.posts.map((item: any) => <li><a href={item.href}>{item.description}</a></li>)}
+</ul>
