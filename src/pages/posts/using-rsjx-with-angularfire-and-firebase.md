@@ -1,3 +1,12 @@
+---
+layout: '../../layouts/Layout.astro'
+title: 'DEM0: Respawn task in Todoist by label'
+pubDate: 2024-10-06
+description: 'Let me introduce ToRedo'
+author: 'Tobias Wright'
+tags: ["todoist", "javascript","browser-extention", "demo", "SPIKE", "ReTodo"]
+---
+
 Using RxJs subjects with angularfire and firebase
 
 Background
