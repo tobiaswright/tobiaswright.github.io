@@ -1,21 +1,20 @@
 ---
 layout: '../../layouts/Layout.astro'
-title: 'DEM0: Respawn task in Todoist by label'
-pubDate: 2024-10-06
-description: 'Let me introduce ToRedo'
+title: 'Using RxJs subjects with angularfire and firebase'
+pubDate: 2025-10-06
+description: 'Using RxJs subjects with angularfire and firebase'
 author: 'Tobias Wright'
-tags: ["todoist", "javascript","browser-extention", "demo", "SPIKE", "ReTodo"]
+tags: ["rxjs", "javascript"]
 ---
+## Using RxJs subjects with angularfire and firebase
 
-Using RxJs subjects with angularfire and firebase
-
-Background
+### Background
 I’m working to understand RxJs a little better, and created a project that is tracking what I’m reading and watching. I’m using Angular and Material with a firebase backend,
 
-Problem statement
+### Problem statement
 I want to pull my data from firebase once and use RxJS subjects to subscribe to the data and present it in a couple different formats, my complete list and the items that I’m actively reading and watching
 
-Step 1
+## Step 1
 
 Inject you firebase instance and connect to your firestore
 
@@ -33,7 +32,7 @@ export class DataService {
     constructor() {}
 }
 ```
-Step 2.
+## Step 2.
 
 Add a new subject and it's subject subscribers. We use asObservable to make the subject read only
 ```angular-ts
@@ -56,7 +55,7 @@ export class DataService {
 }
 ```
 
-Step 3.
+## Step 3.
 
 I got a little help with ChatGPT with this next step. Set your firestore call as the producer and subscribe to it, next add the observer as the subject. This sends the data to our two subscribers items$ and activeItems$, add this to the constructor so it runs first.
 ```angular-ts

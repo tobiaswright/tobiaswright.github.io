@@ -7,6 +7,8 @@ author: 'Tobias Wright'
 tags: ["javascript","java"]
 ---
 
+## Getting your reps in
+
 One of the biggest mistakes I made when getting into front-end design is using jQuery rather than learning the fundamentals of javascript. The price for being immediately productive has left me even now, with embarrassing gaps in my knowledge of the fundamentals of JavaScript. It is an expensive price.
 
 I'm currently learning Java and I’m determined not to make the same mistake by skipping straight to springboot, which is part of the stack we use, I taking the proper way and getting a good foundation in Java first. To that end, after a couple search landing me at the MOOCfi.
