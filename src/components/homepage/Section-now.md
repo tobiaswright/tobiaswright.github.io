@@ -1,14 +1,12 @@
-What I'm doing these days. Last updated 10/17/2025
+What I'm doing these days. Last updated 8/20/2026
 
 - Learning Java
 - Playing Minecraft
-- Swimining
 
 #### Reading
-- Razorblade Tears
-- Making It All Work
-- King (audiobook)
+- Wind and Truth (5th book in the Stormlight series)
+- Atomic Habit (tbr)
+- Finding Me by Viola Davis (audiobook)
 
 #### Watching
-- Attack on Titan
-- Reacher
+- Servrence
