@@ -9,4 +9,4 @@ What I'm doing these days. Last updated 8/20/2026
 - Finding Me by Viola Davis (audiobook)
 
 #### Watching
-- Servrence
+- Serverence
