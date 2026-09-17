@@ -1,12 +1,14 @@
-What I'm doing these days. Last updated 8/20/2026
+What I'm doing these days. Last updated 9/17/2026
 
-- Learning Java
+- Learning Java Springboot
+- Brushing up on Angular
 - Playing Minecraft
+- Beekeeping
 
 #### Reading
-- Wind and Truth (5th book in the Stormlight series)
-- Atomic Habit (tbr)
+- Atomic Habits
+- Dungeon Crawler Carl
 - Finding Me by Viola Davis (audiobook)
 
 #### Watching
-- Serverence
+- Paradise
