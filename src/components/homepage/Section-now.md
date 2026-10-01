@@ -1,14 +1,16 @@
-What I'm doing these days. Last updated 9/17/2026
+What I'm doing these days. Last updated 10/1/2026
 
 - Learning Java Springboot
 - Brushing up on Angular
+- AI Agents
 - Playing Minecraft
 - Beekeeping
+- Some AWS tomfoolery
 
 #### Reading
 - Atomic Habits
-- Dungeon Crawler Carl
+- Ring Shout
 - Finding Me by Viola Davis (audiobook)
 
 #### Watching
-- Paradise
+- The Boys
