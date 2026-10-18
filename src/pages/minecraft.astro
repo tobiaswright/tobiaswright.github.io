@@ -1,0 +1,70 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Welcome to Tobias Wrightdd">
+	<section x-data="minecraftDiary">
+		<h2 class="uppercase font-['Comic_Neue']">Minecraft Diary</h2>
+
+		<p x-show="loading">Loading entries...</p>
+		<p x-show="error" x-text="error" role="alert"></p>
+		<p x-show="!loading && !error && entries.length === 0">No entries found.</p>
+
+		<ul class="list-none ml-0" x-show="!loading && !error && entries.length > 0">
+			<template x-for="entry in entries" :key="entry.id">
+				<li>
+					<h4 class="uppercase font-['Comic_Neue']" x-text="entry.date"></h4>
+					<p class="pb-0 mb-0"><strong x-text="entry.x"></strong>, <strong x-text="entry.y"></strong></p>
+          <p class="mb-10" x-text="entry.body"></p>
+				</li>
+			</template>
+		</ul>
+	</section>
+</Layout>
+
+<script>
+	import Alpine from "alpinejs";
+  import db from "../firebase/client";
+	import { get, ref } from "firebase/database";
+
+  type ent = {
+    id?: string,
+    body: string,
+    date: string,
+    x: string,
+    y: string
+  }
+
+	const formatDate = (date: string): string => {
+    const dateObj = new Date(date);
+    const formattedDate = dateObj.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+		return formattedDate;
+  }
+
+	document.addEventListener("alpine:init", () => {
+		Alpine.data("minecraftDiary", () => ({
+			entries: [] as ent[],
+			loading: true,
+			error: "",
+			async init() {
+				try {
+					const snapshot = await get(ref(db, "entries"));
+					const data = snapshot.val() ?? {};
+					this.entries = Object.entries(data).map(([id, value]) => {
+            const nvalue = value as ent;
+			      return ({ id, body: nvalue.body, date: formatDate(nvalue.date), x: nvalue.x, y: nvalue.y })
+          }).reverse();
+				} catch (error) {
+					console.error("Failed to load Minecraft diary entries:", error);
+					this.error = "Unable to load entries. Please try again later.";
+				} finally {
+					this.loading = false;
+				}
+			},
+		}));
+	});
+</script>
