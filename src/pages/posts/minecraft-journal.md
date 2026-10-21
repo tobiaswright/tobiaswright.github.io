@@ -65,7 +65,7 @@ The architecture ended up being surprisingly straightforward:
 1. The Lambda function processes the email and extracts the journal information.
 1. The processed entry is written to Firebase Realtime Database.
 
-The Lambda function is written in Python. It parses the email content and creates a structured journal entry. In addition to the journal text itself, I store Minecraft coordinates so I can associate entries with specific locations in my world.
+[https://gist.github.com/tobiaswright/e121c3bac64ff6c50f30da59783e9a7a](The Lambda function is written in Python). It parses the email content and creates a structured journal entry. In addition to the journal text itself, I store Minecraft coordinates so I can associate entries with specific locations in my world.
 
 This allows me to keep notes such as:
 
