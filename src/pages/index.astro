@@ -7,6 +7,16 @@ import Section_Projects from "../components/homepage/Section-projects.md";
 import Section_Write from "../components/homepage/Section-write.astro";
 import Section_Share from "../components/homepage/Section-share.astro";
 
+
+const nowDate = "10/29/2026";
+const now = [
+  "Learning Java Springboot",
+  "Brushing up on Angular",
+  "AI Agents",
+  "Playing Minecraft"
+]
+const nowTitles = ["Atomic Habits", "Mistborn"]
+const nowWatching = ["From"]
 ---
 
 <Layout title="Welcome to Tobias Wright">
@@ -24,7 +34,20 @@ import Section_Share from "../components/homepage/Section-share.astro";
   </Section>
 
   <Section header="now">
-    <Section_Now />
+    <p>
+      What I'm doing these days. Last updated {nowDate}
+    </p>
+    <ul>
+      {now.map((now) => <li>{now}</li>)}
+    </ul>
+    <h4>Reading</h4>
+    <ul>
+      {nowTitles.map((title) => <li>{title}</li>)}
+    </ul>
+    <h4>Watching</h4>
+    <ul>
+      {nowWatching.map((title) => <li>{title}</li>)}
+    </ul>
   </Section>
 
   <Section_Share />
