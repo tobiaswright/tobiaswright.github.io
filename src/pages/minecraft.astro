@@ -15,7 +15,7 @@ import Layout from "../layouts/Layout.astro";
 				<li>
 					<h4 class="uppercase font-['Comic_Neue']" x-text="entry.date"></h4>
 					<p class="pb-0 mb-0"><strong x-text="entry.x"></strong>, <strong x-text="entry.y"></strong></p>
-          <p class="mb-10" x-text="entry.body"></p>
+          <p class="mb-10" x-html="entry.body"></p>
 				</li>
 			</template>
 		</ul>
